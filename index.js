@@ -43,25 +43,25 @@ app.command("/jasb-joke", async ({command,ack,respond}) =>{
   }
 });
 
-app.command("/jasb-user_info", async({command,ack,respond}) => {
+app.command("/jasb-user_info", async({command,ack,respond, client}) => {
   await ack();
   try {
     const triggered = await client.users.info({
-      user = command.user_id
+      user : command.user_id
     });
     const user = triggered.user;
-    const tz = uzer.tz ?? "Not Set!";
+    const tz = user.tz ?? "Not Set!";
     const email = user.profile?.email ?? "Not Provided :>";
     const username = user.name;
     const userid = user.id;
 
     await respond({
-      text: `User information for <@${userID}> is:\nTimezone : ${tz}\nSlack_Email : $`
+      text: `User information for <@${userid}> is:\nTimezone : ${tz}\nSlack_Email : ${email}\nUsername : ${username}\nUser_ID : ${userid}`
     });
-
   }
   catch(err) {
-
+    console.error(err);
+    await respond ({text: `Failed to steal your data :(`});
   }
 });
 
