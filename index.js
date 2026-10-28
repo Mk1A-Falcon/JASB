@@ -33,7 +33,7 @@ app.command("/jasb-joke", async ({command,ack,respond}) =>{
   try {
     const joke = await axios.get("https://official-joke-api.appspot.com/random_joke");
     await respond({
-      text: `${joke.data.setup}\n\n${joke.data.punchline}`
+      text: `**${joke.data.setup}**\n\n${joke.data.punchline}`
     });
   }
   catch {
@@ -41,8 +41,7 @@ app.command("/jasb-joke", async ({command,ack,respond}) =>{
       text: `Imagine getting ghosted by a "joke" api :skulk:`
     })
   }
-}
-);
+});
 
 (async() => {
   await app.start();
