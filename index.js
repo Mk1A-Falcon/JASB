@@ -28,6 +28,22 @@ app.command("/jasb-help", async ({command,ack,respond}) =>{
   })
 });
 
+app.command("/jasb-joke", async ({command,ack,respond}) =>{
+  await ack();
+  try {
+    const joke = await axios.get("https://official-joke-api.appspot.com/random_joke");
+    await respond({
+      text: `${joke.data.setup}\n\n${joke.data.punchline}`
+    });
+  }
+  catch {
+    await respond ({
+      text: `Imagine getting ghosted by a "joke" api :skulk:`
+    })
+  }
+}
+);
+
 (async() => {
   await app.start();
   console.log("Bot is running!");
