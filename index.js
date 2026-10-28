@@ -26,7 +26,7 @@ app.command("/jasb-help", async ({command,ack,respond}) =>{
     2. /jasb-joke : Fetches a Joke.
     3. /jasb-help : The help command for JASB slackbot`
   })
-})
+});
 
 (async() => {
   await app.start();
