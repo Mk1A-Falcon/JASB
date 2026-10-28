@@ -6,7 +6,7 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   appToken: process.env.SLACK_APP_TOKEN,
   socketMode: true
-})
+});
 
 app.command("/jasb-ping",async ({command,ack,respond}) => {
   const start = Date.now();
@@ -21,6 +21,9 @@ app.command("/jasb-ping",async ({command,ack,respond}) => {
 app.command("/jasb-help", async ({command,ack,respond}) =>{
   await ack();
   await respond({
-    text:`JASB or Just Another Slackbot, an AI workflow by <@U0AE3R4FR3R>, *A work in progress* `
+    text:`JASB or Just Another Slackbot, an AI workflow by <@U0AE3R4FR3R>, *A work in progress*\nCurrent Command List-
+    1. /jasb-ping : Pings the bot for it's latency.
+    2. /jasb-joke : Fetches a Joke.
+    3. /jasb-help : The help command for JASB slackbot`
   })
 })
