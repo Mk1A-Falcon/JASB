@@ -24,7 +24,8 @@ app.command("/jasb-help", async ({command,ack,respond}) =>{
     text:`JASB or Just Another Slackbot, an AI workflow by <@U0AE3R4FR3R>, *A work in progress*\nCurrent Command List-
     1. /jasb-ping : Pings the bot for it's latency.
     2. /jasb-joke : Fetches a Joke.
-    3. /jasb-help : The help command for JASB slackbot`
+    3. /jasb-user_info : Fetches all availaible user information from the slack's "client" attribute.
+    4. /jasb-help : The help command for JASB slackbot`
   })
 });
 
