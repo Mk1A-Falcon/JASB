@@ -36,10 +36,32 @@ app.command("/jasb-joke", async ({command,ack,respond}) =>{
       text: `**${joke.data.setup}**\n\n${joke.data.punchline}`
     });
   }
-  catch {
+  catch(err) {
     await respond ({
       text: `Imagine getting ghosted by a "joke" api :skulk:`
     })
+  }
+});
+
+app.command("/jasb-user_info", async({command,ack,respond}) => {
+  await ack();
+  try {
+    const triggered = await client.users.info({
+      user = command.user_id
+    });
+    const user = triggered.user;
+    const tz = uzer.tz ?? "Not Set!";
+    const email = user.profile?.email ?? "Not Provided :>";
+    const username = user.name;
+    const userid = user.id;
+
+    await respond({
+      text: `User information for <@${userID}> is:\nTimezone : ${tz}\nSlack_Email : $`
+    });
+
+  }
+  catch(err) {
+
   }
 });
 
